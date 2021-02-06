@@ -1,0 +1,158 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: url("../images/body_bg.jpg") no-repeat center 0;
+}
+
+.top {
+
+}
+
+.top img {
+    width: 100%;
+    height: auto;
+}
+
+.content {
+    overflow: hidden;
+    background: #ebdbd4;
+    width: 1000px;
+    margin: 200px auto;
+    height: 1000px;
+    overflow: hidden;
+}
+
+.content>.left {
+    float: left;
+    width: 150px;
+}
+
+.content>.left img {
+    width: 150px;
+}
+
+.content>.right {
+    float: left;
+    width: 240px;
+}
+
+.content>.right img {
+    width: 240px;
+}
+
+.content>.center {
+    float: left;
+    overflow: hidden;
+    width: 600px;
+    height: auto;
+}
+
+.content>.center>.comment-box {
+    width: 600px;
+    height: 168px;
+    background: url("../images/comment.png") no-repeat 0 0;
+    background-size: 600px 168px;
+}
+
+.content>.center>.comment-box>.comment {
+    width: 570px;
+    height: 73px;
+    margin-top: 45px;
+    margin-left: 15px;
+    resize: none;
+    border: none;
+    outline: none;
+}
+
+.content>.center>.comment-box>.send {
+    width: 82px;
+    height: 30px;
+    margin-top: 4px;
+    margin-left: 506px;
+    border: none;
+    color: white;
+    background: #FFB877;
+}
+
+.messagelist-box {
+    width: 600px;
+    overflow: hidden;
+    background: white;
+}
+
+.info {
+    padding: 10px 20px;
+    border-bottom: 2px solid #ccc;
+}
+
+.info-text {
+    line-height: 25px;
+    margin-bottom: 10px;
+    word-break: break-all;
+    word-wrap: break-word;
+    overflow: hidden;
+}
+
+.info-operation {
+    width: 100%;
+    overflow: hidden;
+}
+
+.info-time {
+    float: left;
+    font-size: 13px;
+    color: #ccc;
+}
+
+.info-handle {
+    float: right;
+    font-size: 13px;
+}
+
+.info-handle>a{
+    text-decoration: none;
+    color: #ccc;
+    background: url("../images/icons.png") no-repeat 0 0;
+    padding-left: 25px;
+    margin-left: 10px;
+}
+.info-handle>a:nth-child(2){
+    background-position: 0 -17px;
+}
+.info-handle>a:nth-child(3){
+    background-position: 0 -33px;
+}
+
+.page {
+    width: 1000px;
+    height: auto;
+    overflow: hidden;
+    margin: 0 auto;
+    text-align: right;
+}
+
+.page a {
+    float: left;
+    width: 40px;
+    height: 40px;
+    border-radius: 6px;
+    background: white;
+    color: #fd8040;
+    text-align: center;
+    line-height: 40px;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+.page a:hover {
+    background: skyblue;
+    color: white;
+}
+
+.page>.cur {
+    background: skyblue;
+    color: white;
+}
