@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>12-ajax-test</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 300px;
+            height: 300px;
+            border: 1px solid #000;
+            margin: 50px auto;
+            text-align: center;
+            background: #ccc;
+        }
+        img{
+            width: 200px;
+            height: 200px;
+            display: block;
+            margin: 10px auto 10px;
+            border: 1px solid #000;
+        }
+        p{
+            text-align: center;
+            background: pink;
+        }
+    </style>
+    <script src="myAjax2.js"></script>
+    <script src="js/jquery-1.12.4.js"></script>
+</head>
+<body>
+<div>
+    <p id="title">商品标题名称</p>
+    <img src="" alt="">
+    <p id="des">商品描述信息</p>
+    <button name="nz">女装</button>
+    <button name="bb">包包</button>
+    <button name="tx">拖鞋</button>
+</div>
+<script>
+    $(function () {
+
+        var $goodsTitle = $("#title");
+        var $goodsImg = $("img");
+        var $goodsDes = $("#des");
+
+        $("button").click(function () {
+
+            var bName = $(this).attr("name");
+            console.log(bName);
+
+            ajax({
+                type: "get",
+                url: "12-ajax-json-goods.php",
+                timeout: "3000",
+                success: function (xhr) {
+                    var subObj = JSON.parse(xhr.responseText)[bName];
+
+                    $goodsTitle.text(subObj.title);
+                    $goodsImg.attr("src",subObj.images);
+                    $goodsDes.text(subObj.des);
+                },
+                error: function (xhr) {
+                    alert("请求失败");
+                }
+
+            });
+
+
+
+
+
+        })
+
+
+    });
+
+
+</script>
+</body>
+</html>

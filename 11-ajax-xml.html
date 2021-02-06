@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="myAjax2.js"></script>
+    <script src="js/jquery-1.12.4.js"></script>
+</head>
+<body>
+<button>提交</button>
+</body>
+
+
+<script>
+    $(function () {
+
+        var oBtn = window.document.getElementsByTagName("button")[0];
+
+
+        oBtn.onclick = function () {
+
+
+
+            ajax({
+                type: "get",
+                url: "11-ajax-xml.php",
+                timeout: "3000",
+                success: function (xhr) {
+                    // console.log(xhr.responseXML);
+                    var res = xhr.responseXML;
+                    console.log(res.getElementsByTagName("name")[0]);
+                    console.log(res.getElementsByTagName("age")[0]);
+                },
+                error: function (xhr) {
+                    alert("请求失败");
+                }
+
+            });
+
+
+
+            /*$.ajax({
+
+                url: "11-ajax-xml.php",
+                type: "get",
+                success:function (msg) {
+                    console.log(msg);
+                    /!*var $msg = msg;*!/
+                    /!*console.log(msg.document.getElementsByTagName("name"));;*!/
+                },
+                error:function () {
+                    alert("请求失败");
+                }
+
+            });*/
+
+
+        }
+
+
+    });
+
+
+</script>
+</html>
