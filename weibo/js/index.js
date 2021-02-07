@@ -49,6 +49,11 @@ $(function () {
                 $(".send").prop("disabled",true);
                 $(".send").css("background","#FFB877");
 
+                //判断当前页是否为6条微博，超出部分删除
+                if ($(".info").length > 6){
+                    $(".info:last-child").remove();
+                }
+
                 //每发布一条微博，重新获取一次页码
                 getPageNum ();
             },
@@ -73,9 +78,13 @@ $(function () {
 
     });
 
-    getMsgList(1);
+    var number = window.location.hash.substring(1) || 1;
+    console.log(number);
+    getMsgList(number);
+    console.log($(".page>a"));
 
     function getMsgList(number) {
+        $(".messagelist-box").html("")
         $.ajax({
             type: "get",
             url: "weibo.php",
@@ -149,13 +158,28 @@ $(function () {
             url: "weibo.php",
             data: "act=del&id=" + obj.id,
             success: function (msg) {
-                console.log(msg);
+                /*console.log(msg);*/
             },
             error: function (xhr) {
                 console.log(xhr.status);
             }
         });
+        //重新获取当前页
+        getMsgList($(".cur").html());
+        /*getMsgList();*/
+
         getPageNum ();
+    });
+
+    // 监听页码的点击
+    $("body").delegate(".page>a","click",function () {
+        /*console.log(this);
+        console.log($(this));
+        console.log($(this).html());*/
+        $(this).addClass("cur");
+        $(this).siblings().removeClass("cur");
+        /*getMsgList($(this).html());*/
+        document.location.hash = $(this).html();
     });
 
     // 创建节点方法
@@ -209,7 +233,7 @@ $(function () {
                 var obj = eval("(" + msg + ")");
                 for (var i = 0; i<obj.count; i++){
                     var $pageTag = $("<a href='javascript:;'>"+ (i + 1) +"</a>");
-                    if (i === 0){
+                    if(i === (number-1)){
                         $pageTag.addClass("cur");
                     }
                     $(".page").append($pageTag);
